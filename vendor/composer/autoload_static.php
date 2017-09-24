@@ -11,10 +11,6 @@ class ComposerStaticInitb714f128c1a8328c4383084a3d86a435
     );
 
     public static $prefixLengthsPsr4 = array (
-        'T' => 
-        array (
-            'Twig\\' => 5,
-        ),
         'S' => 
         array (
             'Symfony\\Component\\Dotenv\\' => 25,
@@ -33,14 +29,11 @@ class ComposerStaticInitb714f128c1a8328c4383084a3d86a435
         'F' => 
         array (
             'FastRoute\\' => 10,
+            'Faker\\' => 6,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Twig\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/twig/twig/src',
-        ),
         'Symfony\\Component\\Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/dotenv',
@@ -69,16 +62,13 @@ class ComposerStaticInitb714f128c1a8328c4383084a3d86a435
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
+        'Faker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
+        ),
     );
 
     public static $prefixesPsr0 = array (
-        'T' => 
-        array (
-            'Twig_' => 
-            array (
-                0 => __DIR__ . '/..' . '/twig/twig/lib',
-            ),
-        ),
         'P' => 
         array (
             'Pimple' => 

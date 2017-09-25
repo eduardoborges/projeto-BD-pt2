@@ -1,8 +1,5 @@
 <?php
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-
 $app->get('/query1/{nome}', function($request, $response, $args){
     $db = $this->db;
 

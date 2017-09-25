@@ -3,7 +3,7 @@
 $app->get('/query8/{cpf}', function($request, $response, $args){
     $db = $this->db;
 
-    $cpf         = $args['cpf'];
+    $cpf = $args['cpf'];
 
     $data = $db->query("SELECT 
                             I.id_ingresso,

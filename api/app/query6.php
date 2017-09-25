@@ -3,9 +3,8 @@
 $app->get('/query6/{mes}/{ano}', function($request, $response, $args){
     $db = $this->db;
 
-    $mes   = $args['mes'];
-
-    $ano     = $args['ano'];
+    $mes  = $args['mes'];
+    $ano  = $args['ano'];
 
     $data = $db->query("SELECT
                             F.cpf,

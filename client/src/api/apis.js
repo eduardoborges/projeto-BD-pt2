@@ -1,0 +1,13 @@
+import API from './';
+
+class HelpersAPIs{
+    static generos() {
+        return API.get(`/generos`);
+    }
+
+    static funcionarios() {
+        return API.get(`/funcionarios`);
+    }
+}
+
+export default HelpersAPIs;

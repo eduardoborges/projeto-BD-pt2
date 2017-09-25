@@ -1,6 +1,5 @@
 <?php
 
-
 $app->get('/clientes/povoar', function(){
     $db     = $this->get('db');
     $faker  = $this->get('faker');

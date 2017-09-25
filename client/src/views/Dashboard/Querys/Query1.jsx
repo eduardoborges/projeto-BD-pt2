@@ -7,6 +7,12 @@ import 'numeral/locales';
 import {Columns, Column} from '../../../components/Grid';
 import Reactable from 'reactable';
 
+var Table = Reactable.Table,
+    Thead = Reactable.Thead,
+    Th = Reactable.Th,
+    Tr = Reactable.Tr,
+    Td = Reactable.Td;
+
 
 numeral.locale('pt-br');
 
@@ -62,18 +68,18 @@ class Query1 extends Component {
 
                 {
                     this.state.data.length ? (
-                        <Reactable.Table className="table">
+                        <Table className="table">
                             {
                                 this.state.data.map(item => (
-                                    <Reactable.Tr>
+                                    <Tr>
                                         <Td column="CPF Cliente" data={ item.cpf_cliente } />
                                         <Td column="Nome Cliente" data={ item.nome_cliente } />
                                         <Td column="Ingressos Comprados" data={ item.ingressos_comprados } />
                                         <Td column="Total Gasto" data={ numeral( item.total_gasto ).format('$ 0,0[.]00')  } />
-                                    </Reactable.Tr>
+                                    </Tr>
                                 ))
                             }
-                        </Reactable.Table>
+                        </Table>
                     ) : ( 
                         <div>
                             <hr/>

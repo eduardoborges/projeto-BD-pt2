@@ -4,16 +4,39 @@ Nesta aplicação desenvolvemos um pequeno sistema de cinema utilizando a arquit
 
 ## Estrutura de Pastas
 
-  - ```/api/``` Aqui fica os arquivos da API responsavel pelas querys e processamento
-  - ```/client/``` Aqui fica o cliente que irá conversar com a API e receber os dados
-    - ```/client/src``` Aquivos de origem do cliente, escrito em React
+```plain
+.
+├── api [server-side app]
+│   ├── app
+│   │   ├── apis
+│   │   └── migrations
+│   └── containers
+|
+|
+└── client [client side app]
+    ├── public
+    └── src
+        ├── __tests__
+        ├── api
+        ├── components
+        ├── styles
+        └── views
+            ├── Dashboard
+            │   ├── Overview
+            │   └── Querys
+            └── Home
+
+17 directories
+```
 
 ## Execução
 
   Para executar esta aplicação é necessário baixar um [release](https://github.com/eduardoborges/projeto-BD-pt2/releases) no respositório e executar:
-```sh
+
+``` sh
 $ php -S localhost:3000
 ```
+
 Basta abrir a url [http://localhost:3000](http://localhost:3000) em seu navegador.
 
 **É necessário que possua o PHP >= 5.6 em sua máquina.**

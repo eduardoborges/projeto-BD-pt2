@@ -31,7 +31,9 @@ Nesta aplicação desenvolvemos um pequeno sistema de cinema utilizando a arquit
 
 ## Execução
 
-  Para executar esta aplicação é necessário baixar um [release](https://github.com/eduardoborges/projeto-BD-pt2/releases) no respositório e executar:
+  1. Baixe um [release](https://github.com/eduardoborges/projeto-BD-pt2/releases) no respositório;
+  2. Configure o banco de dados da api no arquivo ```.env``` na pasta ```api```
+  3. Execute: 
 
 ``` sh
 $ php -S localhost:3000
@@ -43,9 +45,9 @@ Basta abrir a url [http://localhost:3000](http://localhost:3000) em seu navegado
 
 
 
-### Instalação (Ambiente de Desenolvimento)
+## Quer desenvolver?
 
- necessário o Composer e o Node, pois eles que gerenciam as dependências.
+ E necessário o **Composer** e o **Node**, pois eles que gerenciam as dependências.
 ```sh
 $ git clone https://github.com/eduardoborges/projeto-BD-pt2 && cd projeto-BD-pt2
 $ cd api && composer install && cd ../client && npm i
@@ -54,7 +56,7 @@ $ cd api && composer install && cd ../client && npm i
 Agora só executar o servidor de API dentro pasta ```api```:
 
 ```sh
-$ php -S localhost:3000
+$ php -S localhost:8000
 ```
 
 E simultaneamente execute o cliente na pasta ```client```:
@@ -67,12 +69,12 @@ $ npm start
 
 Esta aplicação utiliza algumas bibliotecas:
 
-* [Slim Framework]() - HTML enhanced for web apps!
-* [PDO]() - HTML enhanced for web apps!
-* [React]() - awesome web-based text editor
-* [react-router]() - awesome web-based text editor
-* [axios]() - awesome web-based text editor
-* [Bulma]() - awesome web-based text editor
+* [Slim Framework](https://www.slimframework.com/) - Para ajudar a criar as rotas e esqueleto da API.
+* [PDO](http://php.net/manual/pt_BR/class.pdo.php) - Biblioteca para efetuar querys no banco.
+* [React](https://facebook.github.io/react/) - Utilizamos para construir a interface do app.
+* [react-router](https://github.com/ReactTraining/react-router) - Auxiliou na construcao das rotas da interface.
+* [axios](https://github.com/mzabriskie/axios) - Uma biblioteca para fazer requisições pela interface.
+* [Bulma](http://bulma.io) - Um framework pra fazer uma interface bonitinha.
 
 License
 ----

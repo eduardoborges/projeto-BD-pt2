@@ -67,7 +67,7 @@ class Query1 extends Component {
                 </Columns>
 
                 {
-                    this.state.data.length ? (
+                    this.state.data ? (
                         <Table className="table">
                             {
                                 this.state.data.map(item => (

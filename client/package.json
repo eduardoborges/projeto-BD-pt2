@@ -17,6 +17,7 @@
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "reactable": "^0.14.1",
+    "svgo": "^0.7.2",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

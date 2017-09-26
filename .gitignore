@@ -1,2 +1,5 @@
 api/vendor/
 client/node_modules
+client/build
+public/
+release/

@@ -21,9 +21,8 @@ class Query extends Component {
         super(props);
         this.state = {
             data: [],
-            arrecadacao: "",
-            ano: ""
-
+            arrecadacao: "50",
+            ano: "2017"
         }
     }
 
@@ -46,8 +45,8 @@ class Query extends Component {
 
             <main>
 
-                <h1 className="title">Informações de pagamento do funcionário por mês</h1>
-                <h3 className="subtitle">Retorna o cpf, o nome, o salário-base e o salário final do funcionário no mês selecionado</h3>
+                <h1 className="title">Query 7</h1>
+                <h3 className="subtitle">Qual a arrecadacão e quantidade de clientes por estado?</h3>
                 
                    
 
@@ -57,14 +56,14 @@ class Query extends Component {
                             <div className="field">
                                 <label className="label">Arrecadacão Minima</label>
                                 <div className="control">
-                                    <input autoComplete="off" required type="text" className="input" name="arrecadacao" pattern="[0-9]+$" onChange={ this.handleChange.bind(this) } placeholder="Quantidade" />
+                                    <input autoComplete="off" required type="text" value={this.state.arrecadacao} className="input" name="arrecadacao" pattern="[0-9]+$" onChange={ this.handleChange.bind(this) } placeholder="Quantidade" />
                                 </div>
                             </div>
 
                             <div className="field">
                             <label className="label">Ano</label>
                             <div className="control">
-                                <input autoComplete="off" required type="text" className="input" name="ano" pattern="[0-9]{4}$" onChange={ this.handleChange.bind(this) } placeholder="Formato: AAAA" />
+                                <input autoComplete="off" required type="text"  value={this.state.ano} className="input" name="ano" pattern="[0-9]{4}$" onChange={ this.handleChange.bind(this) } placeholder="Formato: AAAA" />
                             </div>
                         </div>
                       

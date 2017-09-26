@@ -20,8 +20,18 @@ class Overview extends Component {
                 <hr/>
                 
                 <div className="content">
+
                     <p>
-                    Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.
+                        Projeto construido como avaliação para a disciplina de Banco de Dados pelo professor André Brito na Universidade Federal de Sergipe período 2017.1
+                    </p>
+                    <p>
+
+                        Nesta aplicação desenvolvemos um pequeno sistema de cinema utilizando a arquitetura cliente - servidor da seguinte forma.
+                    
+                    </p>
+
+                    <p>
+                        Desenvolvido pelos alunos: Eduardo Borges e Lucas Cruz
                     </p>
                 </div>
             </Dashboard>

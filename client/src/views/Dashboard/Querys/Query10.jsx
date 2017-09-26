@@ -39,8 +39,10 @@ class Query extends Component {
 
             <main>
 
-                <h1 className="title">Listagem da quantidade de vendedores e gerentes por estado</h1>
+                <h1 className="title">Query 10</h1>
+                <h3 className="subtitle">Quantos vendedores e gerentes existem por estado?</h3>
                 
+                <small>Query executada automaticamente</small>
                 
 
                 {

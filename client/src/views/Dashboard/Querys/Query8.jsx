@@ -50,8 +50,8 @@ class Query extends Component {
             <main>
 
 
-                <h1 className="title">Listagem de ingressos vendidos por funcionário</h1>
-                <h3 className="subtitle">Retorna lista com o identificador do ingresso, a data da venda, o nome e o preço do filme</h3>
+                <h1 className="title">Query 8</h1>
+                <h3 className="subtitle">Quais foram os ingressos vendidos pelo funcionário com o identificador, a data da venda, o nome e o preço do filme ?</h3>
 
                 <Columns multiline>
                     <form onSubmit={ this.handleSearch.bind(this) }>

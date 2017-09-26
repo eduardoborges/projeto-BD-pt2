@@ -96,8 +96,8 @@ class Query extends Component {
 
             <main>
 
-                <h1 className="title">Informações de pagamento do funcionário por mês</h1>
-                <h3 className="subtitle">Retorna o cpf, o nome, o salário-base e o salário final do funcionário no mês selecionado</h3>
+                <h1 className="title">Query 6</h1>
+                <h3 className="subtitle">Qual o cpf, o nome, o salário-base e o salário final do funcionário no mês selecionado?</h3>
                 
                    
 

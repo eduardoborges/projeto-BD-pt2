@@ -45,9 +45,9 @@ class Query1 extends Component {
 
             <main>
 
-                <h1 className="title">Pesquisa de cliente por nome</h1>
-                <h3 className="subtitle">Retorna a quantidade de ingressos que o cliente já comprou até o momento
-                e o total de quanto o cliente já gastou até o momento</h3>
+                <h1 className="title">Query 1</h1>
+                <h3 className="subtitle">Qual a quantidade de ingressos que o cliente já comprou até o momento
+                e o total de quanto o cliente já gastou?</h3>
                    
 
                 <Columns multiline>

@@ -23,6 +23,9 @@ class Query extends Component {
             data: [],
             ano: ""
         }
+
+        QuerysAPI.query9()
+        .then( resp => this.setState({ data: resp.data }) );
     }
 
     handleChange(e){
@@ -33,9 +36,6 @@ class Query extends Component {
 
     handleSearch(e){
         e.preventDefault();
-        QuerysAPI.query9()
-            .then( resp => this.setState({ data: resp.data }) );
-
     }
 
     render(){
@@ -44,21 +44,11 @@ class Query extends Component {
 
             <main>
 
-                <h1 className="title">Listagem de filmes que não possuem nenhum ingresso vendido</h1>
+                <h1 className="title">Query 9</h1>
+                <h3 className="subtitle">Quais os nomes dos filmes que não possuem nenhum ingresso vendido?</h3>
+                <small>Query executada automaticamente</small>
                 
-
-                <Columns multiline>
-                    <form onSubmit={ this.handleSearch.bind(this) }>
-                        <Column is="12">
-
-                            
-                      
-                        </Column>
-                        <Column is="6">
-                            <button className="button is-primary is-merdium is-block">Pesquisar</button>
-                        </Column>
-                    </form>
-                </Columns>
+                
 
                 {
                     this.state.data.length ? (

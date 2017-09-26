@@ -51,8 +51,8 @@ class Query2 extends Component {
 
             <main>
 
-                <h1 className="title">Lista de sessões por gênero</h1>
-                <h3 className="subtitle">Retorna a lista de sessões por gênero</h3>
+                <h1 className="title">Query 2</h1>
+                <h3 className="subtitle">Qual a lista de sessões por gênero?</h3>
                    
 
                 <Columns multiline>
@@ -82,19 +82,17 @@ class Query2 extends Component {
 
                 {
                     this.state.data.length ? (
-                        <Table className="table" data={this.state.data}>
-                            <Thead>
-                                <Th column="nome">
-                                    Nome do Filme
-                                </Th>
-                                <Th column="numero">
-                                    # da Sala
-                                </Th>
-                                <Th column="data_hora">
-                                    Horário da Sessão
-                                </Th>
-                            </Thead>
-                        </Table>
+                        <Table className="table">
+                        {
+                            this.state.data.map(item => (
+                                <Tr>
+                                    <Td column="Nome do Filme" data={ item.nome } />
+                                    <Td column="# da Sala" data={ item.numero } />
+                                    <Td column="Horário da Sessão" data={ moment(item.data_hora).format('LLLL') } />
+                                </Tr>
+                            ))
+                        }
+                    </Table>
                     ) : ( 
                         <div>
                             <hr/>

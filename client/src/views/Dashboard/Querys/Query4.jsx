@@ -45,8 +45,8 @@ class Query4 extends Component {
 
             <main>
 
-                <h1 className="title">Ingressos vendidos por funcionário</h1>
-                <h3 className="subtitle">⁠⁠⁠⁠⁠Quantidade de ingressos e valor total de ingressos vendidos por cada funcionário em um intervalo de tempo</h3>
+                <h1 className="title">Query 4</h1>
+                <h3 className="subtitle"> Qual a q⁠⁠⁠⁠uantidade de ingressos e valor total de ingressos vendidos por cada funcionário em um intervalo de tempo?</h3>
                    
 
                 <Columns multiline>

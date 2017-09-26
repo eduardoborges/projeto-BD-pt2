@@ -45,7 +45,8 @@ class Query4 extends Component {
 
             <main>
 
-                <h1 className="title">Filmes em exibição em um intervalo de tempo</h1>
+                <h1 className="title">Query 5</h1>
+                <h3 className="subtitle">Quaais os filmes em exibição em um intervalo de tempo?</h3>                
                 
                    
 

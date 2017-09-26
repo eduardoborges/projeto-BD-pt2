@@ -44,8 +44,8 @@ class Query3 extends Component {
 
             <main>
 
-                <h1 className="title">Quantidade de ingressos vendidos por mês em um ano</h1>
-                { /* <h3 className="subtitle">Retorna a lista de sessões por gênero</h3> */ }
+                <h1 className="title">Query 3</h1>
+                <h3 className="subtitle">Qual a quantidade de ingressos vendidos por mês em um ano?</h3>
                    
 
                 <Columns multiline>

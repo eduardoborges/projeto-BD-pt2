@@ -25,6 +25,7 @@ const DashboardFooter = (props) => (
             <p>
                 <i>Projeto construido como avaliação para a disciplina de Banco de Dados pelo professor André Brito na Universidade Federal de Sergipe período 2017.1</i>  <br/>
                 <strong>CinemaCMS Project</strong> pof <a href="http://getinfo.net.br" target="_blank"  rel="noopener noreferrer">Eduardo Borges</a> e <a href="http://getinfo.net.br" target="_blank"  rel="noopener noreferrer">Lucas Cruz</a>
+                <hr />
                 <i>Ambiente: {process.env.NODE_ENV } | Host da API: {process.env.REACT_APP_API_HOST}</i>
             </p>
             </div>
@@ -90,12 +91,6 @@ const DashboardSidebar = (props) => (
                 <SidebarItem to="/dashboard/query/9"      title="Query 9" />
                 <SidebarItem to="/dashboard/query/10"     title="Query 10" />
                 
-            </ul>
-
-            <p className="menu-label">Configurações</p>
-            <ul className="menu-list">
-                <SidebarItem to="/dashboard/rotinas"     title="Povoamento" />
-                <SidebarItem to="/dashboard/status"      title="Status do Banco" />
             </ul>
 
         </aside>

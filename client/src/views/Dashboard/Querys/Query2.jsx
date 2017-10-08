@@ -22,8 +22,9 @@ class Query2 extends Component {
         super(props);
         this.state = {
             data: [],
-            id: "",
-            _generos: []
+            id: "4",
+            _generos: [],
+            _isLoading: false
         };
 
         HelpersAPIs.generos()
@@ -40,9 +41,12 @@ class Query2 extends Component {
 
     handleSearch(e){
         e.preventDefault();
+        this.setState({
+            _isLoading: true
+        })
         QuerysAPI
             .query2(this.state.id)
-            .then( resp => this.setState({ data: resp.data }) );
+            .then( resp => this.setState({ data: resp.data, _isLoading: false }) );
     }
 
     render(){
@@ -62,7 +66,7 @@ class Query2 extends Component {
                                 <label className="label">Gênero</label>
                                 <div className="control">
                                 <div className="select">
-                                    <select name="id" onChange={this.handleChange.bind(this)}>
+                                    <select name="id" value={this.state.id} onChange={this.handleChange.bind(this)}>
                                     {
                                         this.state._generos.map( item =>
                                             (<option value={item.id_genero} key={item.id_genero}>{item.nome}</option>)
@@ -75,7 +79,7 @@ class Query2 extends Component {
                       
                         </Column>
                         <Column is="6">
-                            <button className="button is-primary is-merdium is-block">Pesquisar</button>
+                            <button className={"button is-primary is-merdium is-block " + (this.state._isLoading?'is-loading':'')}>Pesquisar</button>
                         </Column>
                     </form>
                 </Columns>

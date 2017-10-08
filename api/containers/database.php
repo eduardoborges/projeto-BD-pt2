@@ -16,6 +16,7 @@ $container['db'] = function ($container) {
         $db = new PDO($conectionString);
         return $db;
     } catch (\PDOException  $e) {
-        die("<h1>Erro ao conectar Banco de dados:</h1>" . $e->getMessage());
+        http_response_code(500);
+        die(stripcslashes('{code: 500, message: "Cant connect database"}'));
     };
 };

@@ -21,8 +21,9 @@ class Query extends Component {
         super(props);
         this.state = {
             data: [],
-            mes: "",
-            ano: "",
+            mes: "4",
+            ano: "2017",
+            _isLoading: false,
             _meses: [
                 {
                     number: 1,
@@ -85,9 +86,10 @@ class Query extends Component {
 
     handleSearch(e){
         e.preventDefault();
+        this.setState({ _isLoading: true })
         QuerysAPI
             .query6(this.state.mes, this.state.ano)
-            .then( resp => this.setState({ data: resp.data }) );
+            .then( resp => this.setState({ data: resp.data, _isLoading: false }) );
     }
 
     render(){
@@ -108,7 +110,7 @@ class Query extends Component {
                                 <label className="label">Mês</label>
                                 <div className="control">
                                     <div className="select">
-                                    <select name="mes" onChange={this.handleChange.bind(this)}>
+                                    <select name="mes" value={this.state.mes} onChange={this.handleChange.bind(this)}>
                                     {
                                         this.state._meses.map( mes =>
                                             (<option value={mes.number} key={mes.nome}>{mes.nome}</option>)
@@ -122,37 +124,31 @@ class Query extends Component {
                             <div className="field">
                             <label className="label">Ano</label>
                             <div className="control">
-                                <input required autoComplete="off" type="text" className="input" name="ano" pattern="[0-9]{4}$" onChange={ this.handleChange.bind(this) } placeholder="Formato: AAAA" />
+                                <input required autoComplete="off" value={this.state.ano} type="text" className="input" name="ano" pattern="[0-9]{4}$" onChange={ this.handleChange.bind(this) } placeholder="Formato: AAAA" />
                             </div>
                         </div>
                       
                         </Column>
                         <Column is="6">
-                            <button className="button is-primary is-merdium is-block">Pesquisar</button>
+                            <button className={"button is-primary is-merdium is-block " + (this.state._isLoading?'is-loading':'')}>Pesquisar</button>
                         </Column>
                     </form>
                 </Columns>
 
                 {
                     this.state.data.length ? (
-                        <Table className="table" data={this.state.data}>
-                            <Thead>
-                                <Th column="cpf">
-                                    CPF
-                                </Th>
-                                <Th column="nome">
-                                    Nome do funcionário
-                                </Th>
-                                <Th column="salario_base">
-                                    Salário Base
-                                </Th>
-                                <Th column="salario_final">
-                                    Salário Final
-                                </Th>
-                                <Th column="quantidade_ingressos">
-                                    Quant. de Ingressos
-                                </Th>
-                            </Thead>
+                        <Table className="table">
+                            {
+                                this.state.data.map(item => (
+                                    <Tr key={item.id}>
+                                        <Td column="CPF" data={ item.cpf } />
+                                        <Td column="Nome do funcionário" data={ item.nome } />
+                                        <Td column="Salário Base" data={ `R$ ${item.salario_base.replace('.',',')}` } />
+                                        <Td column="Salário Final" data={ `R$ ${item.salario_final.replace('.',',')}` } />
+                                        <Td column="Quant. de Ingressos" data={ item.quantidade_ingressos } />
+                                    </Tr>
+                                ))
+                            }
                         </Table>
                     ) : ( 
                         <div>

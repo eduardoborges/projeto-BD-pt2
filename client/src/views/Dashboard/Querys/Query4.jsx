@@ -21,8 +21,9 @@ class Query4 extends Component {
         super(props);
         this.state = {
             data: [],
-            data_inicio: "",
-            data_final: ""
+            data_inicio: "2010-01-01",
+            data_final: "2017-10-12",
+            _isLoading: false
         }
     }
 
@@ -34,9 +35,12 @@ class Query4 extends Component {
 
     handleSearch(e){
         e.preventDefault();
+        this.setState({
+            _isLoading: true
+        })
         QuerysAPI
             .query4(this.state.data_inicio, this.state.data_final)
-            .then( resp => this.setState({ data: resp.data }) );
+            .then( resp => this.setState({ data: resp.data, _isLoading: false }) );
     }
 
     render(){
@@ -55,38 +59,36 @@ class Query4 extends Component {
                             <div className="field">
                                 <label className="label">Data Inicial</label>
                                 <div className="control">
-                                    <input autoComplete="off" required type="date" className="input" name="data_inicio" onChange={ this.handleChange.bind(this) } placeholder="Data Inicio" />
+                                    <input autoComplete="off" required type="date" value={this.state.data_inicio} className="input" name="data_inicio" onChange={ this.handleChange.bind(this) } placeholder="Data Inicio" />
                                 </div>
                             </div>
 
                             <div className="field">
                             <label className="label">Data Final</label>
                             <div className="control">
-                                <input autoComplete="off" required type="date" className="input" name="data_final" onChange={ this.handleChange.bind(this) } placeholder="Data Final" />
+                                <input autoComplete="off" required type="date" value={this.state.data_final} className="input" name="data_final" onChange={ this.handleChange.bind(this) } placeholder="Data Final" />
                             </div>
                         </div>
                       
                         </Column>
                         <Column is="6">
-                            <button className="button is-primary is-merdium is-block">Pesquisar</button>
+                            <button className={"button is-primary is-merdium is-block " +(this.state._isLoading?'is-loading':'') }>Pesquisar</button>
                         </Column>
                     </form>
                 </Columns>
 
                 {
                     this.state.data.length ? (
-                        <Table className="table" data={this.state.data}>
-                            <Thead>
-                                <Th column="nome_funcionario">
-                                    Nome do Funcionário
-                                </Th>
-                                <Th column="quantidade_ingressos">
-                                    Quant. de Ingressos
-                                </Th>
-                                <Th column="total_vendido">
-                                    Total Vendido
-                                </Th>
-                            </Thead>
+                        <Table className="table">
+                            {
+                                this.state.data.map(item => (
+                                    <Tr>
+                                        <Td column="Nome do funcionário" data={ item.nome_funcionario } />
+                                        <Td column="Quant. de Ingressos" data={ item.quantidade_ingressos } />
+                                        <Td column="Total Vendido" data={ `R$ ${item.total_vendido.replace('.',',')}` } />
+                                    </Tr>
+                                ))
+                            }
                         </Table>
                     ) : ( 
                         <div>

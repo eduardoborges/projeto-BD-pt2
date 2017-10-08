@@ -22,8 +22,9 @@ class Query extends Component {
         super(props);
         this.state = {
             data: [],
-            cpf: "",
-            "_funcionarios": []
+            cpf: "63023835799",
+            "_funcionarios": [],
+            "_isLoading": false
         }
 
         HelpersAPI.funcionarios()
@@ -38,9 +39,10 @@ class Query extends Component {
 
     handleSearch(e){
         e.preventDefault();
+        this.setState({ _isLoading: true })
         QuerysAPI
             .query8(this.state.cpf)
-            .then( resp => this.setState({ data: resp.data }) );
+            .then( resp => this.setState({ data: resp.data, _isLoading: false }) );
     }
 
     render(){
@@ -61,7 +63,7 @@ class Query extends Component {
                                 <label className="label">Funcionário</label>
                                 <div className="control">
                                     <div className="select">
-                                    <select name="cpf" onChange={this.handleChange.bind(this)}>
+                                    <select name="cpf" value={this.state.cpf} onChange={this.handleChange.bind(this)}>
                                     {
                                         this.state._funcionarios.map( func =>
                                             (<option value={func.cpf} key={func.cpf}>{func.nome}</option>)
@@ -74,28 +76,24 @@ class Query extends Component {
                       
                         </Column>
                         <Column is="6">
-                            <button className="button is-primary is-merdium is-block">Pesquisar</button>
+                            <button className={"button is-primary is-merdium is-block " + (this.state._isLoading?'is-loading':'') }>Pesquisar</button>
                         </Column>
                     </form>
                 </Columns>
 
                 {
                     this.state.data.length ? (
-                        <Table className="table" data={this.state.data}>
-                            <Thead>
-                                <Th column="id_ingresso">
-                                    #ID Ingresso
-                                </Th>
-                                <Th column="data">
-                                    Data da venda
-                                </Th>
-                                <Th column="nome">
-                                    Nome do Filme
-                                </Th>
-                                <Th column="preco">
-                                    Preço do Ingresso
-                                </Th>
-                            </Thead>
+                        <Table className="table">
+                            {
+                                this.state.data.map(item => (
+                                    <Tr key={item.id}>
+                                        <Td column="#ID Ingresso" data={ item.id_ingresso } />
+                                        <Td column="Data da venda" data={ moment(item.data).format('LLL') } />
+                                        <Td column="Nome do Filme" data={ item.nome } />
+                                        <Td column="Preço do Ingresso" data={ `R$ ${item.preco.replace('.',',')}` } />
+                                    </Tr>
+                                ))
+                            }
                         </Table>
                     ) : ( 
                         <div>

@@ -50,5 +50,16 @@ require __DIR__."/app/apis/funcionarios.php";
 // require __DIR__."/app/migrations/funcionarios_gerente.php";
 // require __DIR__."/app/migrations/funcionarios_vendedor.php";
 
+$app->get('/status', function(){
+
+    try {
+        $db = $this->db;
+        return $db->getAttribute(PDO::ATTR_CONNECTION_STATUS);
+    } catch(Exception $e ){
+        return "err";
+    }
+   
+});
+
 //boot app
 $app->run();

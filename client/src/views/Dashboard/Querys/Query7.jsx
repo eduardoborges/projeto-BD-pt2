@@ -22,7 +22,8 @@ class Query extends Component {
         this.state = {
             data: [],
             arrecadacao: "50",
-            ano: "2017"
+            ano: "2017",
+            _isLoading: false
         }
     }
 
@@ -34,9 +35,10 @@ class Query extends Component {
 
     handleSearch(e){
         e.preventDefault();
+        this.setState({ _isLoading: true })
         QuerysAPI
             .query7(this.state.arrecadacao, this.state.ano)
-            .then( resp => this.setState({ data: resp.data }) );
+            .then( resp => this.setState({ data: resp.data, _isLoading: false }) );
     }
 
     render(){
@@ -69,25 +71,23 @@ class Query extends Component {
                       
                         </Column>
                         <Column is="6">
-                            <button className="button is-primary is-merdium is-block">Pesquisar</button>
+                            <button className={"button is-primary is-merdium is-block " + (this.state._isLoading?'is-loading':'')}>Pesquisar</button>
                         </Column>
                     </form>
                 </Columns>
 
                 {
                     this.state.data.length ? (
-                        <Table className="table" data={this.state.data}>
-                            <Thead>
-                                <Th column="estado">
-                                    Estado
-                                </Th>
-                                <Th column="clientes_por_estado">
-                                    Clientes por estado
-                                </Th>
-                                <Th column="arrecadacao_estado">
-                                    Arrecadação
-                                </Th>
-                            </Thead>
+                        <Table className="table">
+                            {
+                                this.state.data.map(item => (
+                                    <Tr key={item.id}>
+                                        <Td column="Estado" data={ item.estado } />
+                                        <Td column="Clientes por estado" data={ item.clientes_por_estado } />
+                                        <Td column="Arrecadação" data={ `R$ ${item.arrecadacao_estado.replace('.',',')}` } />
+                                    </Tr>
+                                ))
+                            }
                         </Table>
                     ) : ( 
                         <div>

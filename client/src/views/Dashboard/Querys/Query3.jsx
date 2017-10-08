@@ -21,7 +21,8 @@ class Query3 extends Component {
         super(props);
         this.state = {
             data: [],
-            ano: ""
+            ano: "",
+            _isLoading: false
         }
     }
 
@@ -33,9 +34,10 @@ class Query3 extends Component {
 
     handleSearch(e){
         e.preventDefault();
+        this.setState({ _isLoading: true })
         QuerysAPI
             .query3(this.state.ano)
-            .then( resp => this.setState({ data: resp.data }) );
+            .then( resp => this.setState({ data: resp.data, _isLoading: false }) );
     }
 
     render(){
@@ -60,7 +62,8 @@ class Query3 extends Component {
                       
                         </Column>
                         <Column is="6">
-                            <button className="button is-primary is-merdium is-block">Pesquisar</button>
+                            <button className={"button is-primary is-block " + (this.state._isLoading?'is-loading':'')}>Pesquisar</button>
+                        
                         </Column>
                     </form>
                 </Columns>

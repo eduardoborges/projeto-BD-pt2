@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import APIHelpers from '../../api/apis';
 
 
 const DashboardTitle = (props) => (
@@ -47,10 +48,7 @@ const DashboardHeader = (props) => (
             </span>
 
             <div className="nav-right nav-menu">
-                <a className="nav-item is-tab is-active">
-                    { 'Olá, Fulano' }
-                </a>
-                <a className="nav-item is-tab" onClick={ () => alert("Isso aqui é só pra simulacao mesmo") }>Sair</a>
+                <span className="nav-item">BD status <i className={"fa fa-database "+ (props.dbStatus === 200 ? "has-text-success" : "has-text-danger") } style={{marginLeft: '10px'}}></i> </span>
             </div>
         </div>
     </nav>
@@ -99,22 +97,41 @@ const DashboardSidebar = (props) => (
 );
 
 
-const Dashboard = (props) => (
-    <div>
-        <DashboardHeader />
-        <div className="section">
-            <div className="container">
-                <div className="columns is-multiline">
-                        <DashboardSidebar /> 
-                        <DashboardContent title={props.title} subTitle={props.subTitle}>
-                            {props.children}
-                        </DashboardContent>
-                    <DashboardFooter />
+class Dashboard extends React.Component {
+    
+    constructor(){
+        super();
+        this.state =  { 
+            status: false
+        }
+
+        this.getDbStatus();
+    }
+
+    getDbStatus(){
+        APIHelpers.dbStatus().then( resp => this.setState({ status: resp.status }) );
+    }
+    render(){
+        return (
+            <div>
+                <DashboardHeader dbStatus={this.state.status}  />
+                <div className="section">
+                    <div className="container">
+                        <div className="columns is-multiline">
+                                <DashboardSidebar /> 
+                                <DashboardContent title={this.props.title} subTitle={this.props.subTitle}>
+                                    {this.props.children}
+                                </DashboardContent>
+                            <DashboardFooter />
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-);
+            );
+    }
+    
+
+}
 
 
 export default Dashboard;

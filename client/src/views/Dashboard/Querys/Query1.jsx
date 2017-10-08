@@ -22,7 +22,7 @@ class Query1 extends Component {
         super(props);
         this.state = {
             data: [],
-            nome: ""
+            nome: "Rafael"
         };
     }
 
@@ -34,9 +34,10 @@ class Query1 extends Component {
 
     handleSearch(e){
         e.preventDefault();
+        this.setState({ _isLoading: true })
         QuerysAPI
             .query1(this.state.nome)
-            .then( resp => this.setState({ data: resp.data }) );
+            .then( resp => this.setState({ data: resp.data, _isLoading: false }) );
     }
 
     render(){
@@ -56,12 +57,12 @@ class Query1 extends Component {
                             <div className="field">
                                 <label className="label">Name</label>
                                 <div className="control">
-                                    <input autoComplete="off" required className="input" type="text" name="nome" onChange={ this.handleChange.bind(this) }  placeholder="Nome do Cliente" />
+                                    <input autoComplete="off" required value={ this.state.nome } className="input" type="text" name="nome" onChange={ this.handleChange.bind(this) }  placeholder="Nome do Cliente" />
                                 </div>
                             </div>
                         </Column>
                         <Column is="6">
-                            <button className="button is-primary is-merdium is-block">Pesquisar</button>
+                            <button className={"button is-primary is-block " + (this.state._isLoading?'is-loading':'')}>Pesquisar</button>                        
                         </Column>
                     </form>
                 </Columns>
